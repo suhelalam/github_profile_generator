@@ -8,9 +8,9 @@ export default function RootLayout({ children }) {
         </head>
         <body>
           {/* Header */}
-          <header style={{ padding: "10px", background: "#333", color: "#fff" }}>
+          <header style={{ padding: "1px", background: "#333", color: "#fff" }}>
             <nav>
-              <h1>My App</h1>
+              <h1>Github Read.Me Profile Generator</h1>
             </nav>
           </header>
   
@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
           <main style={{ padding: "20px" }}>{children}</main>
   
           {/* Footer */}
-          <footer style={{ padding: "10px", textAlign: "center", background: "#333", color: "#fff" }}>
+          <footer style={{ padding: "1px", textAlign: "center", background: "#333", color: "#fff" }}>
             <p>&copy; 2024 My App. All rights reserved.</p>
           </footer>
         </body>
