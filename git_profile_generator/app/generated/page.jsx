@@ -31,10 +31,13 @@ export default function GeneratedPage() {
       boxSizing: 'border-box',
     }}>
       <div style={{ display: 'flex', gap: '10px' }}> {/* Flexbox for horizontal layout */}
-        <button onClick={handleCopy} style={{ padding: '10px 15px' }}>
+        <button onClick={handleCopy} style={{ padding: '10px 15px', width: '150px' }}>
           Copy to Clipboard
         </button>
-        <button onClick={handleGoBack} style={{ padding: '10px 15px' }}>
+        <button onClick={handleGoBack} style={{ padding: '10px 15px', width: '150px' }}>
+          Edit
+        </button>
+        <button onClick={handleGoBack} style={{ padding: '10px 15px', width: '150px' }}>
           Generate Again
         </button>
       </div>

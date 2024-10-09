@@ -1,5 +1,5 @@
 'use client';
-<<<<<<< HEAD
+
 import { useState } from "react";
 import Template1 from "../components/templates/Template1";
 import Template2 from "../components/templates/Template2";
@@ -7,18 +7,13 @@ import Template3 from "../components/templates/Template3";
 import { useRouter } from 'next/navigation'
 import Skills from "../components/Skills/Skills"; // Import the Skills component
 
-=======
-import { useState } from 'react';
-import LanguagesSelect from '../components/LanguagesSelect'; // Language selection component
-import Template1 from '../components/templates/Template1';
-import Template2 from '../components/templates/Template2';
-import Template3 from '../components/templates/Template3';
->>>>>>> b3392771df6e60a4c488792729a7b2e21d204c50
+
 
 export default function Home() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [bio, setBio] = useState('');
+  const [skills, setSkills] = useState([]); // State for selected skills
   const [languages, setLanguages] = useState([]); // State for selected programming languages
   const [template, setTemplate] = useState('templateOne');
   const [markdown, setMarkdown] = useState('');
@@ -40,11 +35,6 @@ export default function Home() {
     { name: 'Algorithms', icon: '/icons/algorithms.png' }
   ];
 
-<<<<<<< HEAD
-  
-  
-=======
->>>>>>> b3392771df6e60a4c488792729a7b2e21d204c50
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,7 +42,7 @@ export default function Home() {
     let markdownContent = '';
 
     // Combine selected skills and languages
-    const allSkills = [...skills, ...languages];
+    const allSkills = [...skills];
 
     // Render selected template
     if (template === 'templateOne') {
@@ -69,8 +59,14 @@ export default function Home() {
   };
 
 
-  const handleLanguagesChange = (selectedLanguages) => {
-    setLanguages(selectedLanguages);
+
+  const handleSkillChange = (e) => {
+    const { value, checked } = e.target;
+    if (checked) {
+      setSkills([...skills, value]);
+    } else {
+      setSkills(skills.filter((skill) => skill !== value));
+    }
   };
 
   return (
@@ -83,9 +79,9 @@ export default function Home() {
       padding: '10px', // Optional: add padding around the form
       boxSizing: 'border-box' // Include padding in width calculations
     }}>
-      <h1 style={{ marginBottom: '20px', alignSelf: 'flex-start' }}>Enter Your Details</h1>
+      <h1 style={{ marginBottom: '20px', alignSelf: 'center' }}>Enter Your Details</h1>
 
-      <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+      <form onSubmit={handleSubmit} style={{ width: '100%', alignItems: 'center'}}>
         {/* {display: 'flex' to put items next to each other} */}
         {/* Name Field */}
         <div style={{ marginBottom: '15px', width: '20%'}}>
@@ -93,7 +89,7 @@ export default function Home() {
           <input
             type="text"
             id="name"
-            value={name}
+            value={'Suhel Alam'}
             onChange={(e) => setName(e.target.value)}
             required
             style={{ width: '100%', padding: '8px' }} // Make input full width
@@ -106,32 +102,26 @@ export default function Home() {
           <input
             type="email"
             id="email"
-            value={email}
+            value={'suhelalam415@gmail.com'}
             onChange={(e) => setEmail(e.target.value)}
             required
             style={{ width: '100%', padding: '8px' }} // Make input full width
           />
         </div>
 
-<<<<<<< HEAD
+
         {/* Bio Field */}
         <div style={{ marginBottom: '15px', width: '100%' }}>
           <label htmlFor="bio">Bio:</label>
           <textarea
             id="bio"
-            value={bio}
+            value={"I am a software engineer"}
             onChange={(e) => setBio(e.target.value)}
             rows="4"
             style={{ width: '100%', padding: '8px' }} // Make textarea full width
           />
         </div>
-=======
 
-        {/* Language Selection */}
-        <LanguagesSelect onSelectionChange={handleLanguagesChange} />
->>>>>>> b3392771df6e60a4c488792729a7b2e21d204c50
-
-      {/* Skills Section */}
       {/* Skills Component */}
       <Skills selectedSkills={skills} onSkillChange={handleSkillChange} />
 
@@ -151,20 +141,15 @@ export default function Home() {
         </div>
 
         {/* Submit Button */}
-        <button type="submit" style={{ padding: '10px 15px', width: '10%', alignItems: 'center' }}>
-          Generate Markdown
-        </button>
-      </form>
-
-      {/* Display generated markdown */}
-      {markdown && (
-        <div style={{ marginTop: '20px', width: '100%' }}>
-          <h2>Generated GitHub README</h2>
-          <pre style={{ background: '#f4f4f4', padding: '10px' }}>
-            {markdown}
-          </pre>
+        {/* Submit Button */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+          <button type="submit" style={{ padding: '10px 15px', width: '200px' }}>
+            Generate Markdown
+          </button>
         </div>
-      )}
+
+        
+      </form>
 
       {/* Display selected language icons */}
       {languages.length > 0 && (
